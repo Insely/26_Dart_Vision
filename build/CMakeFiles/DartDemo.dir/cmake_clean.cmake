@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/DartDemo.dir/Core/Src/main.cpp.o"
-  "CMakeFiles/DartDemo.dir/Core/Src/main.cpp.o.d"
+  "CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o"
+  "CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o.d"
+  "CMakeFiles/DartDemo.dir/src/main.cpp.o"
+  "CMakeFiles/DartDemo.dir/src/main.cpp.o.d"
   "DartDemo"
   "DartDemo.pdb"
 )

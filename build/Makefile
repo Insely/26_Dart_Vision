@@ -129,29 +129,53 @@ DartDemo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/build
 .PHONY : DartDemo/fast
 
-Core/Src/main.o: Core/Src/main.cpp.o
-.PHONY : Core/Src/main.o
+src/detector/detector.o: src/detector/detector.cpp.o
+.PHONY : src/detector/detector.o
 
 # target to build an object file
-Core/Src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/Core/Src/main.cpp.o
-.PHONY : Core/Src/main.cpp.o
+src/detector/detector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o
+.PHONY : src/detector/detector.cpp.o
 
-Core/Src/main.i: Core/Src/main.cpp.i
-.PHONY : Core/Src/main.i
+src/detector/detector.i: src/detector/detector.cpp.i
+.PHONY : src/detector/detector.i
 
 # target to preprocess a source file
-Core/Src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/Core/Src/main.cpp.i
-.PHONY : Core/Src/main.cpp.i
+src/detector/detector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/detector/detector.cpp.i
+.PHONY : src/detector/detector.cpp.i
 
-Core/Src/main.s: Core/Src/main.cpp.s
-.PHONY : Core/Src/main.s
+src/detector/detector.s: src/detector/detector.cpp.s
+.PHONY : src/detector/detector.s
 
 # target to generate assembly for a file
-Core/Src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/Core/Src/main.cpp.s
-.PHONY : Core/Src/main.cpp.s
+src/detector/detector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/detector/detector.cpp.s
+.PHONY : src/detector/detector.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -162,9 +186,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... DartDemo"
-	@echo "... Core/Src/main.o"
-	@echo "... Core/Src/main.i"
-	@echo "... Core/Src/main.s"
+	@echo "... src/detector/detector.o"
+	@echo "... src/detector/detector.i"
+	@echo "... src/detector/detector.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

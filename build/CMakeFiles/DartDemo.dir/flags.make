@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/dart/code/DartDemo/Core/Inc -isystem /usr/include/opencv4
+CXX_INCLUDES = -I/home/dart/code/DartDemo/include -isystem /usr/include/opencv4
 
 CXX_FLAGS = -std=gnu++17
 

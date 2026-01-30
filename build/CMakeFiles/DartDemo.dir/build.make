@@ -72,28 +72,44 @@ include CMakeFiles/DartDemo.dir/flags.make
 CMakeFiles/DartDemo.dir/codegen:
 .PHONY : CMakeFiles/DartDemo.dir/codegen
 
-CMakeFiles/DartDemo.dir/Core/Src/main.cpp.o: CMakeFiles/DartDemo.dir/flags.make
-CMakeFiles/DartDemo.dir/Core/Src/main.cpp.o: /home/dart/code/DartDemo/Core/Src/main.cpp
-CMakeFiles/DartDemo.dir/Core/Src/main.cpp.o: CMakeFiles/DartDemo.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dart/code/DartDemo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/DartDemo.dir/Core/Src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DartDemo.dir/Core/Src/main.cpp.o -MF CMakeFiles/DartDemo.dir/Core/Src/main.cpp.o.d -o CMakeFiles/DartDemo.dir/Core/Src/main.cpp.o -c /home/dart/code/DartDemo/Core/Src/main.cpp
+CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o: CMakeFiles/DartDemo.dir/flags.make
+CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o: /home/dart/code/DartDemo/src/detector/detector.cpp
+CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o: CMakeFiles/DartDemo.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dart/code/DartDemo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o -MF CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o.d -o CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o -c /home/dart/code/DartDemo/src/detector/detector.cpp
 
-CMakeFiles/DartDemo.dir/Core/Src/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DartDemo.dir/Core/Src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dart/code/DartDemo/Core/Src/main.cpp > CMakeFiles/DartDemo.dir/Core/Src/main.cpp.i
+CMakeFiles/DartDemo.dir/src/detector/detector.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DartDemo.dir/src/detector/detector.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dart/code/DartDemo/src/detector/detector.cpp > CMakeFiles/DartDemo.dir/src/detector/detector.cpp.i
 
-CMakeFiles/DartDemo.dir/Core/Src/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DartDemo.dir/Core/Src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dart/code/DartDemo/Core/Src/main.cpp -o CMakeFiles/DartDemo.dir/Core/Src/main.cpp.s
+CMakeFiles/DartDemo.dir/src/detector/detector.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DartDemo.dir/src/detector/detector.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dart/code/DartDemo/src/detector/detector.cpp -o CMakeFiles/DartDemo.dir/src/detector/detector.cpp.s
+
+CMakeFiles/DartDemo.dir/src/main.cpp.o: CMakeFiles/DartDemo.dir/flags.make
+CMakeFiles/DartDemo.dir/src/main.cpp.o: /home/dart/code/DartDemo/src/main.cpp
+CMakeFiles/DartDemo.dir/src/main.cpp.o: CMakeFiles/DartDemo.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dart/code/DartDemo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DartDemo.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DartDemo.dir/src/main.cpp.o -MF CMakeFiles/DartDemo.dir/src/main.cpp.o.d -o CMakeFiles/DartDemo.dir/src/main.cpp.o -c /home/dart/code/DartDemo/src/main.cpp
+
+CMakeFiles/DartDemo.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DartDemo.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dart/code/DartDemo/src/main.cpp > CMakeFiles/DartDemo.dir/src/main.cpp.i
+
+CMakeFiles/DartDemo.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DartDemo.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dart/code/DartDemo/src/main.cpp -o CMakeFiles/DartDemo.dir/src/main.cpp.s
 
 # Object files for target DartDemo
 DartDemo_OBJECTS = \
-"CMakeFiles/DartDemo.dir/Core/Src/main.cpp.o"
+"CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o" \
+"CMakeFiles/DartDemo.dir/src/main.cpp.o"
 
 # External object files for target DartDemo
 DartDemo_EXTERNAL_OBJECTS =
 
-DartDemo: CMakeFiles/DartDemo.dir/Core/Src/main.cpp.o
+DartDemo: CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o
+DartDemo: CMakeFiles/DartDemo.dir/src/main.cpp.o
 DartDemo: CMakeFiles/DartDemo.dir/build.make
 DartDemo: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.5.4d
 DartDemo: /usr/lib/x86_64-linux-gnu/libopencv_alphamat.so.4.5.4d
@@ -150,7 +166,7 @@ DartDemo: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.5.4d
 DartDemo: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.5.4d
 DartDemo: /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.5.4d
 DartDemo: CMakeFiles/DartDemo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dart/code/DartDemo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable DartDemo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dart/code/DartDemo/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable DartDemo"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DartDemo.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
