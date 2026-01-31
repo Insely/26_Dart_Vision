@@ -1,10 +1,15 @@
 #include <iostream>
 #include "detector/detector.hpp"
+#include "serial/serial.hpp"
 
 // #define DEBUG_MODE
 
 int main()
 {
+    // 串口初始化
+    SerialPort serial("/dev/ttyUSB0", 115200);
+    serial.init();
+
     cv::VideoCapture cap("/home/dart/code/DartDemo/demo.mp4");
     if (!cap.isOpened())
         return -1;
@@ -36,6 +41,42 @@ int main()
         // --- 核心算法处理 ---
         DetectionResult result = detector.process(frame);
 
+        //  通信
+        if (result.is_locked)
+        {
+            VisionData packet;
+
+            // 1. 计算水平偏差
+            packet.yaw_error = (int)result.error_x;
+
+            // 2. 目标是否到达中心 (设置 5 像素的死区)
+            packet.at_center = (std::abs(packet.yaw_error) < 5.0f) ? 1 : 0;
+
+            // 2. 合理的开火判定逻辑：
+            // 只有当目标稳定锁定（is_locked为真）且物理对准中心（at_center为真）时，才允许发射
+            if (packet.at_center == 1)
+            {
+                packet.allow_fire = 1;
+            }
+            else
+            {
+                packet.allow_fire = 0; // 即使锁定了，如果没对准中心，也不准发射
+            }
+
+            // 发送数据
+            serial.send(packet);
+            std::cout << "Data Sent: Yaw=" << packet.yaw_error << std::endl;
+        }
+        else
+        {
+            // 目标丢失，也发一个空包告知电控
+            VisionData lost_packet;
+            lost_packet.yaw_error = 0;
+            lost_packet.at_center = 0;
+            lost_packet.allow_fire = 0;
+            serial.send(lost_packet);
+        }
+
         // --- 绘图与显示逻辑 (保持在 main 方便观察) ---
         cv::Mat display_frame = frame.clone(); // 深拷贝，防止原图像被污染，影响下一轮的图像识别
 
@@ -59,7 +100,7 @@ int main()
 
         // --- 必须添加以下代码！！！ ---
         // 这里的 30 代表每帧等待 30 毫秒，大约对应 33 FPS
-        int key = cv::waitKey(1); // 30
+        int key = cv::waitKey(40); // 30
         if (key == 27)            // 按下 ESC 键退出
             break;
         if (key == 's')

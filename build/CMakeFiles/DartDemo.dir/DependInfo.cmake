@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/dart/code/DartDemo/src/detector/detector.cpp" "CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o" "gcc" "CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o.d"
   "/home/dart/code/DartDemo/src/main.cpp" "CMakeFiles/DartDemo.dir/src/main.cpp.o" "gcc" "CMakeFiles/DartDemo.dir/src/main.cpp.o.d"
+  "/home/dart/code/DartDemo/src/serial/serial.cpp" "CMakeFiles/DartDemo.dir/src/serial/serial.cpp.o" "gcc" "CMakeFiles/DartDemo.dir/src/serial/serial.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

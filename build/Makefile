@@ -177,6 +177,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/serial/serial.o: src/serial/serial.cpp.o
+.PHONY : src/serial/serial.o
+
+# target to build an object file
+src/serial/serial.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/serial/serial.cpp.o
+.PHONY : src/serial/serial.cpp.o
+
+src/serial/serial.i: src/serial/serial.cpp.i
+.PHONY : src/serial/serial.i
+
+# target to preprocess a source file
+src/serial/serial.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/serial/serial.cpp.i
+.PHONY : src/serial/serial.cpp.i
+
+src/serial/serial.s: src/serial/serial.cpp.s
+.PHONY : src/serial/serial.s
+
+# target to generate assembly for a file
+src/serial/serial.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/serial/serial.cpp.s
+.PHONY : src/serial/serial.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +216,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/serial/serial.o"
+	@echo "... src/serial/serial.i"
+	@echo "... src/serial/serial.s"
 .PHONY : help
 
 
