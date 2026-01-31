@@ -129,6 +129,30 @@ DartDemo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/build
 .PHONY : DartDemo/fast
 
+src/camera/camera.o: src/camera/camera.cpp.o
+.PHONY : src/camera/camera.o
+
+# target to build an object file
+src/camera/camera.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/camera/camera.cpp.o
+.PHONY : src/camera/camera.cpp.o
+
+src/camera/camera.i: src/camera/camera.cpp.i
+.PHONY : src/camera/camera.i
+
+# target to preprocess a source file
+src/camera/camera.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/camera/camera.cpp.i
+.PHONY : src/camera/camera.cpp.i
+
+src/camera/camera.s: src/camera/camera.cpp.s
+.PHONY : src/camera/camera.s
+
+# target to generate assembly for a file
+src/camera/camera.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/camera/camera.cpp.s
+.PHONY : src/camera/camera.cpp.s
+
 src/detector/detector.o: src/detector/detector.cpp.o
 .PHONY : src/detector/detector.o
 
@@ -210,6 +234,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... DartDemo"
+	@echo "... src/camera/camera.o"
+	@echo "... src/camera/camera.i"
+	@echo "... src/camera/camera.s"
 	@echo "... src/detector/detector.o"
 	@echo "... src/detector/detector.i"
 	@echo "... src/detector/detector.s"

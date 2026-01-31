@@ -1,5 +1,6 @@
-CMakeFiles/DartDemo.dir/src/main.cpp.o: \
- /home/dart/code/DartDemo/src/main.cpp /usr/include/stdc-predef.h \
+CMakeFiles/DartDemo.dir/src/camera/camera.cpp.o: \
+ /home/dart/code/DartDemo/src/camera/camera.cpp \
+ /usr/include/stdc-predef.h \
  /home/dart/code/DartDemo/include/camera/camera.hpp \
  /home/dart/code/DartDemo/include/MVS/MvCameraControl.h \
  /home/dart/code/DartDemo/include/MVS/MvErrorDefine.h \
@@ -351,5 +352,10 @@ CMakeFiles/DartDemo.dir/src/main.cpp.o: \
  /usr/include/opencv4/opencv2/video.hpp \
  /usr/include/opencv4/opencv2/video/tracking.hpp \
  /usr/include/opencv4/opencv2/video/background_segm.hpp \
- /home/dart/code/DartDemo/include/detector/detector.hpp \
- /home/dart/code/DartDemo/include/serial/serial.hpp
+ /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+ /usr/include/linux/close_range.h

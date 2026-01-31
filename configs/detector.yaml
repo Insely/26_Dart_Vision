@@ -1,0 +1,8 @@
+%YAML:1.0
+---
+Detector:
+  GrayThreshold: 150    # 二值化阈值 (0-255)
+  MinArea: 100.0        # 最小连通区域面积
+  MinFoundFrame: 3      # 连续检测多少帧才确认为目标
+
+

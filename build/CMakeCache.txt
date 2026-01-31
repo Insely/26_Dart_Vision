@@ -230,6 +230,9 @@ DartDemo_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 DartDemo_SOURCE_DIR:STATIC=/home/dart/code/DartDemo
 
+//Path to a library.
+MVS_LIB:FILEPATH=/opt/MVS/lib/64/libMvCameraControl.so
+
 //The directory containing a CMake configuration file for OpenCV.
 OpenCV_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/opencv4
 

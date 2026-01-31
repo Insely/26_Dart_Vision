@@ -4,6 +4,7 @@ project(DartDemo)
 # 1. 设置 C++ 标准
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # Generate compile_commands.json for editor support
 
 # 2. 寻找 OpenCV 库
 find_package(OpenCV REQUIRED)
@@ -21,4 +22,21 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
 
 # 6. 链接库
-target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenCV_LIBS})
+# 查找 MVS 库
+find_library(MVS_LIB MvCameraControl PATHS /opt/MVS/lib/64 /opt/MVS/lib /usr/lib NO_DEFAULT_PATH)
+if (MVS_LIB)
+    message(STATUS "Found MVS SDK: ${MVS_LIB}")
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenCV_LIBS} ${MVS_LIB})
+else()
+    message(WARNING "MVS SDK not found! Compilation might fail.")
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenCV_LIBS})
+endif()
+# 查找 MVS 库 (假设在 /opt/MVS/lib/64 或 /opt/MVS/lib)
+# find_library(MVS_LIB MvCameraControl PATHS /opt/MVS/lib/64 /opt/MVS/lib /usr/lib)
+# if (MVS_LIB)
+#     message(STATUS "Found MVS SDK: ${MVS_LIB}")
+#     target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenCV_LIBS} ${MVS_LIB})
+# else()
+#     message(WARNING "MVS SDK not found! compilation might fail.")
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${OpenCV_LIBS})
+# endif()
