@@ -151,7 +151,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=DartDemo
+CMAKE_PROJECT_NAME:STATIC=DartVision
 
 //Value Computed by CMake
 CMAKE_PROJECT_SPDX_LICENSE:STATIC=
@@ -222,13 +222,13 @@ CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
 //Value Computed by CMake
-DartDemo_BINARY_DIR:STATIC=/home/dart/code/DartDemo/build
+DartVision_BINARY_DIR:STATIC=/home/dart/code/DartDemo/build
 
 //Value Computed by CMake
-DartDemo_IS_TOP_LEVEL:STATIC=ON
+DartVision_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-DartDemo_SOURCE_DIR:STATIC=/home/dart/code/DartDemo
+DartVision_SOURCE_DIR:STATIC=/home/dart/code/DartDemo
 
 //Path to a library.
 MVS_LIB:FILEPATH=/opt/MVS/lib/64/libMvCameraControl.so

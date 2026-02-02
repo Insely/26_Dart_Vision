@@ -30,12 +30,19 @@ private:
   void preprocess(const cv::Mat &input);
   bool findTarget(const cv::Mat &input, cv::Point2f &best_center);
 
-  // 2. 算法参数（建议封装在这里，方便后续对接配置文件）
-  int gray_threshold_ = 250; // 二值化阈值
-  double min_area_ = 200.0;  // 最小面积过滤
-  int min_found_frame_ = 3;  // 连续检测帧数阈值
+  // 2. 算法参数
+  // HSV 阈值
+  int h_min_ = 35;
+  int h_max_ = 90;
+  int s_min_ = 43;
+  int s_max_ = 255;
+  int v_min_ = 46;
+  int v_max_ = 255;
+
+  double min_area_ = 200.0; // 最小面积过滤
+  int min_found_frame_ = 3; // 连续检测帧数阈值
 
   // 3. 内部状态变量
-  int found_count_ = 0; // 连续检测到的帧数状态
-  cv::Mat gray_, mask_; // 中间处理图
+  int found_count_ = 0;       // 连续检测到的帧数状态
+  cv::Mat hsv_, gray_, mask_; // 中间处理图
 };

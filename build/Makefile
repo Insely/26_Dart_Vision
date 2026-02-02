@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named DartDemo
+# Target rules for targets named DartVision
 
 # Build rule for target.
-DartDemo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 DartDemo
-.PHONY : DartDemo
+DartVision: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 DartVision
+.PHONY : DartVision
 
 # fast build rule for target.
-DartDemo/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/build
-.PHONY : DartDemo/fast
+DartVision/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/build
+.PHONY : DartVision/fast
 
 src/camera/camera.o: src/camera/camera.cpp.o
 .PHONY : src/camera/camera.o
 
 # target to build an object file
 src/camera/camera.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/camera/camera.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/src/camera/camera.cpp.o
 .PHONY : src/camera/camera.cpp.o
 
 src/camera/camera.i: src/camera/camera.cpp.i
@@ -142,7 +142,7 @@ src/camera/camera.i: src/camera/camera.cpp.i
 
 # target to preprocess a source file
 src/camera/camera.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/camera/camera.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/src/camera/camera.cpp.i
 .PHONY : src/camera/camera.cpp.i
 
 src/camera/camera.s: src/camera/camera.cpp.s
@@ -150,7 +150,7 @@ src/camera/camera.s: src/camera/camera.cpp.s
 
 # target to generate assembly for a file
 src/camera/camera.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/camera/camera.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/src/camera/camera.cpp.s
 .PHONY : src/camera/camera.cpp.s
 
 src/detector/detector.o: src/detector/detector.cpp.o
@@ -158,7 +158,7 @@ src/detector/detector.o: src/detector/detector.cpp.o
 
 # target to build an object file
 src/detector/detector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/detector/detector.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/src/detector/detector.cpp.o
 .PHONY : src/detector/detector.cpp.o
 
 src/detector/detector.i: src/detector/detector.cpp.i
@@ -166,7 +166,7 @@ src/detector/detector.i: src/detector/detector.cpp.i
 
 # target to preprocess a source file
 src/detector/detector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/detector/detector.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/src/detector/detector.cpp.i
 .PHONY : src/detector/detector.cpp.i
 
 src/detector/detector.s: src/detector/detector.cpp.s
@@ -174,7 +174,7 @@ src/detector/detector.s: src/detector/detector.cpp.s
 
 # target to generate assembly for a file
 src/detector/detector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/detector/detector.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/src/detector/detector.cpp.s
 .PHONY : src/detector/detector.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -182,7 +182,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -190,7 +190,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -198,7 +198,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/serial/serial.o: src/serial/serial.cpp.o
@@ -206,7 +206,7 @@ src/serial/serial.o: src/serial/serial.cpp.o
 
 # target to build an object file
 src/serial/serial.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/serial/serial.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/src/serial/serial.cpp.o
 .PHONY : src/serial/serial.cpp.o
 
 src/serial/serial.i: src/serial/serial.cpp.i
@@ -214,7 +214,7 @@ src/serial/serial.i: src/serial/serial.cpp.i
 
 # target to preprocess a source file
 src/serial/serial.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/serial/serial.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/src/serial/serial.cpp.i
 .PHONY : src/serial/serial.cpp.i
 
 src/serial/serial.s: src/serial/serial.cpp.s
@@ -222,7 +222,7 @@ src/serial/serial.s: src/serial/serial.cpp.s
 
 # target to generate assembly for a file
 src/serial/serial.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/src/serial/serial.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/src/serial/serial.cpp.s
 .PHONY : src/serial/serial.cpp.s
 
 # Help Target
@@ -233,7 +233,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... DartDemo"
+	@echo "... DartVision"
 	@echo "... src/camera/camera.o"
 	@echo "... src/camera/camera.i"
 	@echo "... src/camera/camera.s"

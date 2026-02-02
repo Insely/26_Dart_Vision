@@ -1,4 +1,4 @@
-CMakeFiles/DartDemo.dir/src/serial/serial.cpp.o: \
+CMakeFiles/DartVision.dir/src/serial/serial.cpp.o: \
  /home/dart/code/DartDemo/src/serial/serial.cpp \
  /usr/include/stdc-predef.h \
  /home/dart/code/DartDemo/include/serial/serial.hpp \

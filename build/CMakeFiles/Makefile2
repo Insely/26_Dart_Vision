@@ -63,11 +63,11 @@ CMAKE_BINARY_DIR = /home/dart/code/DartDemo/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/DartDemo.dir/all
+all: CMakeFiles/DartVision.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles/DartDemo.dir/codegen
+codegen: CMakeFiles/DartVision.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -75,40 +75,40 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/DartDemo.dir/clean
+clean: CMakeFiles/DartVision.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/DartDemo.dir
+# Target rules for target CMakeFiles/DartVision.dir
 
 # All Build rule for target.
-CMakeFiles/DartDemo.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dart/code/DartDemo/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target DartDemo"
-.PHONY : CMakeFiles/DartDemo.dir/all
+CMakeFiles/DartVision.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dart/code/DartDemo/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target DartVision"
+.PHONY : CMakeFiles/DartVision.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/DartDemo.dir/rule: cmake_check_build_system
+CMakeFiles/DartVision.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dart/code/DartDemo/build/CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/DartDemo.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/DartVision.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dart/code/DartDemo/build/CMakeFiles 0
-.PHONY : CMakeFiles/DartDemo.dir/rule
+.PHONY : CMakeFiles/DartVision.dir/rule
 
 # Convenience name for target.
-DartDemo: CMakeFiles/DartDemo.dir/rule
-.PHONY : DartDemo
+DartVision: CMakeFiles/DartVision.dir/rule
+.PHONY : DartVision
 
 # codegen rule for target.
-CMakeFiles/DartDemo.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dart/code/DartDemo/build/CMakeFiles --progress-num=1,2,3,4,5 "Finished codegen for target DartDemo"
-.PHONY : CMakeFiles/DartDemo.dir/codegen
+CMakeFiles/DartVision.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dart/code/DartDemo/build/CMakeFiles --progress-num=1,2,3,4,5 "Finished codegen for target DartVision"
+.PHONY : CMakeFiles/DartVision.dir/codegen
 
 # clean rule for target.
-CMakeFiles/DartDemo.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartDemo.dir/build.make CMakeFiles/DartDemo.dir/clean
-.PHONY : CMakeFiles/DartDemo.dir/clean
+CMakeFiles/DartVision.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/DartVision.dir/build.make CMakeFiles/DartVision.dir/clean
+.PHONY : CMakeFiles/DartVision.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -13,8 +13,18 @@ bool Detector::init(const std::string &config_path) {
     return false;
   }
 
-  if (!fs["Detector"]["GrayThreshold"].empty())
-    fs["Detector"]["GrayThreshold"] >> gray_threshold_;
+  if (!fs["Detector"]["H_min"].empty())
+    fs["Detector"]["H_min"] >> h_min_;
+  if (!fs["Detector"]["H_max"].empty())
+    fs["Detector"]["H_max"] >> h_max_;
+  if (!fs["Detector"]["S_min"].empty())
+    fs["Detector"]["S_min"] >> s_min_;
+  if (!fs["Detector"]["S_max"].empty())
+    fs["Detector"]["S_max"] >> s_max_;
+  if (!fs["Detector"]["V_min"].empty())
+    fs["Detector"]["V_min"] >> v_min_;
+  if (!fs["Detector"]["V_max"].empty())
+    fs["Detector"]["V_max"] >> v_max_;
 
   if (!fs["Detector"]["MinArea"].empty())
     fs["Detector"]["MinArea"] >> min_area_;
@@ -23,19 +33,24 @@ bool Detector::init(const std::string &config_path) {
     fs["Detector"]["MinFoundFrame"] >> min_found_frame_;
 
   std::cout << "[Detector] Config Loaded: "
-            << "GrayThreshold=" << gray_threshold_ << ", MinArea=" << min_area_
+            << "H=" << h_min_ << "-" << h_max_ << ", S=" << s_min_ << "-"
+            << s_max_ << ", V=" << v_min_ << "-" << v_max_
+            << ", MinArea=" << min_area_
             << ", MinFoundFrame=" << min_found_frame_ << std::endl;
   return true;
 }
 
 // 修复 2: 匹配头文件签名，只留一个参数
 void Detector::preprocess(const cv::Mat &input) {
-  // 转换为灰度图
+  // 转换为HSV颜色空间
+  cv::cvtColor(input, hsv_, cv::COLOR_BGR2HSV);
+  // 为了 debug 显示，保留灰度转换 (main.cpp 中使用了 getGray)
   cv::cvtColor(input, gray_, cv::COLOR_BGR2GRAY);
-  // 高斯滤波平滑噪声
-  cv::GaussianBlur(gray_, gray_, cv::Size(5, 5), 0);
-  // 极高阈值二值化提取白色核心
-  cv::threshold(gray_, mask_, gray_threshold_, 255, cv::THRESH_BINARY);
+
+  // 使用HSV阈值进行二值化
+  // cv::Scalar 是 (H, S, V)
+  cv::inRange(hsv_, cv::Scalar(h_min_, s_min_, v_min_),
+              cv::Scalar(h_max_, s_max_, v_max_), mask_);
   // 形态学开运算，去除细小噪点并使核心实心化
   cv::Mat kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(5, 5));
   cv::morphologyEx(mask_, mask_, cv::MORPH_OPEN, kernel);

@@ -1,4 +1,4 @@
-CMakeFiles/DartDemo.dir/src/main.cpp.o: \
+CMakeFiles/DartVision.dir/src/main.cpp.o: \
  /home/dart/code/DartDemo/src/main.cpp /usr/include/stdc-predef.h \
  /home/dart/code/DartDemo/include/camera/camera.hpp \
  /home/dart/code/DartDemo/include/MVS/MvCameraControl.h \

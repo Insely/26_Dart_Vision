@@ -1,7 +1,13 @@
 %YAML:1.0
 ---
 Detector:
-  GrayThreshold: 150    # 二值化阈值 (0-255)
+  # 颜色阈值 (HSV空间, 绿色推荐值)
+  H_min: 35
+  H_max: 90
+  S_min: 43
+  S_max: 255
+  V_min: 46
+  V_max: 255
   MinArea: 100.0        # 最小连通区域面积
   MinFoundFrame: 3      # 连续检测多少帧才确认为目标
 
