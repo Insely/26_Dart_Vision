@@ -23,7 +23,6 @@ public:
   DetectionResult process(const cv::Mat &frame);
   // 获取中间过程图（用于 main 函数中的 DEBUG 显示）
   cv::Mat getMask() const { return mask_; }
-  cv::Mat getGray() const { return gray_; }
 
 private:
   // 1. 内部处理步骤封装
@@ -44,5 +43,5 @@ private:
 
   // 3. 内部状态变量
   int found_count_ = 0;       // 连续检测到的帧数状态
-  cv::Mat hsv_, gray_, mask_; // 中间处理图
+  cv::Mat hsv_, mask_; // 中间处理图
 };

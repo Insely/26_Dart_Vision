@@ -1,6 +1,5 @@
 #include "detector/detector.hpp"
 
-// 修复 1: 使用 found_count_ (匹配头文件)
 Detector::Detector() : found_count_(0) {}
 
 bool Detector::init(const std::string &config_path) {
@@ -40,93 +39,104 @@ bool Detector::init(const std::string &config_path) {
   return true;
 }
 
-// 修复 2: 匹配头文件签名，只留一个参数
 void Detector::preprocess(const cv::Mat &input) {
-  // 转换为HSV颜色空间
+  // 仅做 BGR → HSV 转换，不做全局二值化
   cv::cvtColor(input, hsv_, cv::COLOR_BGR2HSV);
-  // 为了 debug 显示，保留灰度转换 (main.cpp 中使用了 getGray)
-  cv::cvtColor(input, gray_, cv::COLOR_BGR2GRAY);
-
-  // 使用HSV阈值进行二值化
-  // cv::Scalar 是 (H, S, V)
-  cv::inRange(hsv_, cv::Scalar(h_min_, s_min_, v_min_),
-              cv::Scalar(h_max_, s_max_, v_max_), mask_);
-  // 形态学开运算，去除细小噪点并使核心实心化
-  cv::Mat kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(5, 5));
-  cv::morphologyEx(mask_, mask_, cv::MORPH_OPEN, kernel);
 }
 
-// 辅助函数：寻找目标并评分
 bool Detector::findTarget(const cv::Mat &input, cv::Point2f &best_center) {
+  // ====== 第一阶段：粗筛 ======
+  // 在全图做 inRange 快速找出绿色像素（无形态学处理，开销低）
+  cv::Mat rough_mask;
+  cv::inRange(hsv_, cv::Scalar(h_min_, s_min_, v_min_),
+              cv::Scalar(h_max_, s_max_, v_max_), rough_mask);
+
+  // 在粗糙 mask 上找轮廓，只保留大色块
   std::vector<std::vector<cv::Point>> contours;
-  cv::findContours(mask_, contours, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
-  /*mask_: 这里使用的是类的成员变量 mask_（通常是 preprocess
-  函数生成的黑白二值图），而不是传入的 input。
+  cv::findContours(rough_mask, contours, cv::RETR_EXTERNAL,
+                   cv::CHAIN_APPROX_SIMPLE);
 
-  cv::findContours: OpenCV 的核心函数，用于在黑白图中找白色的连通区域。
+  // 在大色块中选出最圆的一个
+  int best_idx = -1;
+  double best_circularity = -1.0;
 
-  cv::RETR_EXTERNAL:
-  关键参数。只检测最外围的轮廓。如果目标内部有空洞（比如甜甜圈），空洞会被忽略，这能减少计算量。
-
-  cv::CHAIN_APPROX_SIMPLE:
-  压缩轮廓点。比如一条直线，它只存起点和终点，不存中间所有的点，节省内存。*/
-
-  bool frame_found = false;
-  double max_score = -1.0;
-
-  for (const auto &contour : contours) {
-    double area = cv::contourArea(contour);
+  for (int i = 0; i < (int)contours.size(); i++) {
+    double area = cv::contourArea(contours[i]);
     if (area < min_area_)
-      continue; // 面积过滤（200<)
+      continue;
 
-    double perimeter = cv::arcLength(contour, true);
-    double circularity =
-        (4 * CV_PI * area) /
-        (perimeter * perimeter); // perimeter: 轮廓的周长 circularity: 圆度公式
-    /*对于完美的圆，结果是 1.0。
+    double perimeter = cv::arcLength(contours[i], true);
+    if (perimeter < 1e-5)
+      continue;
+    double circularity = (4 * CV_PI * area) / (perimeter * perimeter);
 
-    对于正方形，结果约 0.785。
+    if (circularity > best_circularity) {
+      best_circularity = circularity;
+      best_idx = i;
+    }
+  }
 
-    形状越细长或边缘越参差不齐，这个值越接近 0。*/
+  // 初始化 debug mask 为全黑
+  mask_ = cv::Mat::zeros(input.rows, input.cols, CV_8UC1);
 
-    cv::RotatedRect min_rect = cv::minAreaRect(contour);
-    float w = min_rect.size.width;
-    float h = min_rect.size.height;
-    float ratio = (w > h) ? (w / h) : (h / w);
-    /*minAreaRect:
-    给轮廓套一个最小外接旋转矩形（即兴的矩形，可以斜着框住物体）。
+  if (best_idx == -1)
+    return false;
 
-    ratio: 计算长宽比。无论宽大还是高大，永远用 长边 / 短边，确保 ratio
-    >= 1.0。正方形或圆形的 ratio 接近 1.0。*/
+  // ====== 第二阶段：ROI 精处理 ======
+  // 用选中色块的外接矩形裁切 ROI（加 padding 防止边缘截断）
+  cv::Rect bbox = cv::boundingRect(contours[best_idx]);
+  int pad = 20;
+  int roi_x = std::max(0, bbox.x - pad);
+  int roi_y = std::max(0, bbox.y - pad);
+  int roi_w = std::min(input.cols - roi_x, bbox.width + 2 * pad);
+  int roi_h = std::min(input.rows - roi_y, bbox.height + 2 * pad);
+  cv::Rect roi_rect(roi_x, roi_y, roi_w, roi_h);
 
-    // 核心评分逻辑
-    if (circularity > 0.5 && ratio < 1.8) {
-      double score = (circularity * 10.0) + (10.0 / ratio) + (area / 100.0);
-      if (score > max_score) {
-        max_score = score;
-        best_center = min_rect.center;
-        frame_found = true;
+  // 只对 ROI 区域做精确二值化 + 形态学
+  cv::Mat roi_hsv = hsv_(roi_rect);
+  cv::Mat roi_mask;
+  cv::inRange(roi_hsv, cv::Scalar(h_min_, s_min_, v_min_),
+              cv::Scalar(h_max_, s_max_, v_max_), roi_mask);
+
+  cv::Mat kernel = cv::getStructuringElement(cv::MORPH_ELLIPSE, cv::Size(5, 5));
+  cv::morphologyEx(roi_mask, roi_mask, cv::MORPH_OPEN, kernel);
+
+  // 将 ROI mask 写回全图 mask_（用于 debug 显示）
+  roi_mask.copyTo(mask_(roi_rect));
+
+  // 在 ROI mask 中找精确轮廓，选最圆的作为最终目标
+  std::vector<std::vector<cv::Point>> roi_contours;
+  cv::findContours(roi_mask, roi_contours, cv::RETR_EXTERNAL,
+                   cv::CHAIN_APPROX_SIMPLE);
+
+  bool found = false;
+  double max_circ = -1.0;
+
+  for (const auto &c : roi_contours) {
+    double area = cv::contourArea(c);
+    if (area < min_area_)
+      continue;
+
+    double perimeter = cv::arcLength(c, true);
+    if (perimeter < 1e-5)
+      continue;
+    double circularity = (4 * CV_PI * area) / (perimeter * perimeter);
+
+    if (circularity > max_circ) {
+      max_circ = circularity;
+      // ROI 内坐标 → 全图坐标（用矩的质心，比外接矩形中心更精确）
+      cv::Moments m = cv::moments(c);
+      if (m.m00 > 0) {
+        best_center.x = static_cast<float>(m.m10 / m.m00) + roi_x;
+        best_center.y = static_cast<float>(m.m01 / m.m00) + roi_y;
+        found = true;
       }
     }
-    /*初筛：只看那些“比较圆”（circularity > 0.5）且“不太长”（ratio
-    < 1.8）的轮廓。
-
-    评分公式：这是一个加权打分系统：
-
-    circularity * 10.0：越圆分越高。
-
-    10.0 / ratio：长宽比越接近 1（越像正方形/圆形），分越高。
-
-    area /
-    100.0：面积越大分越高（优先锁定离摄像头近的、大的目标，而不是远处的小噪点）。
-
-    更新最佳结果：如果当前轮廓分数超过了历史最高分，它就暂时成为“最佳目标”，记录它的中心点
-    min_rect.center。*/
   }
-  return frame_found;
+
+  return found;
 }
 
-// 修复 3: 加上 const，确保签名与头文件完全一致
 DetectionResult Detector::process(const cv::Mat &frame) {
   preprocess(frame);
 
@@ -138,29 +148,11 @@ DetectionResult Detector::process(const cv::Mat &frame) {
   } else {
     found_count_ = 0;
   }
-  /*这是一个非常重要的防抖动设计。
-
-  如果这一帧看到了目标，计数器 found_count_ 加 1。
-
-  如果这一帧没看到（哪怕只是偶尔闪烁丢了一帧），计数器直接清零。这意味着目标必须连续出现，才会被认为是稳定的。*/
 
   DetectionResult result;
   result.center = current_center;
   result.is_locked = (found_count_ >= min_found_frame_);
-  /*is_locked: 只有当连续看到的次数 found_count_
-  超过阈值（min_found_frame_，比如设为 5 帧）时，
-  才认为目标被锁定了。这避免了因为噪点偶尔闪现导致的误识别。*/
-
-  // 注意：这里需要 frame.cols，所以 preprocess 里的参数是必要的
   result.error_x = current_center.x - (frame.cols / 2.0f);
-  /*error_x: 计算偏航角误差。
-
-  current_center.x 是目标在画面中的 X 坐标。
-
-  frame.cols / 2.0f 是画面中心的 X 坐标。
-
-  结果为负数表示目标在画面左边，正数表示在右边。这个值通常直接传给 PID
-  控制器用来控制机器人的转向。*/
 
   return result;
 }

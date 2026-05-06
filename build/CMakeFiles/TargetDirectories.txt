@@ -1,3 +1,0 @@
-/home/dart/code/DartDemo/build/CMakeFiles/DartVision.dir
-/home/dart/code/DartDemo/build/CMakeFiles/edit_cache.dir
-/home/dart/code/DartDemo/build/CMakeFiles/rebuild_cache.dir
