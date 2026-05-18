@@ -3,8 +3,8 @@
 Settings:
   SerialPort: "/dev/ttyUSB0"    # 串口号
   Baudrate: 115200              # 波特率
-  ShowBinarized: 1              # 是否开启二值化图窗口 (0: 关闭, 1: 开启)
-  ShowUI: 1                     # 是否开启UI图窗口 (0: 关闭, 1: 开启)
+  ShowBinarized: 0              # 是否开启二值化图窗口 (0: 关闭, 1: 开启)
+  ShowUI: 0                     # 是否开启UI图窗口 (0: 关闭, 1: 开启)
   UseDemo: 0                    # 是否启用demo视频作为相机输入 (0: 使用工业相机, 1: 使用demo视频)
   DemoPath: "../demo.mp4"       # demo视频路径 (UseDemo=1 时生效)
   YawOffset: 0                  # Yaw偏置 (像素)，相机与发射中心的水平偏差补偿

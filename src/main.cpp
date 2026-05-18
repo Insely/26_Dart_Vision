@@ -3,7 +3,15 @@
 #include "serial/serial.hpp"
 #include <iostream>
 
-int main() {
+int main(int argc, char *argv[]) {
+  // --- 解析命令行参数 ---
+  bool arg_show_ui = false;
+  for (int i = 1; i < argc; i++) {
+    if (std::string(argv[i]) == "-s") {
+      arg_show_ui = true;
+    }
+  }
+
   // --- 读取全局配置 ---
   cv::FileStorage settings("../configs/settings.yaml", cv::FileStorage::READ);
   if (!settings.isOpened()) {
@@ -33,6 +41,11 @@ int main() {
     settings["Settings"]["DemoPath"] >> demo_path;
   if (!settings["Settings"]["YawOffset"].empty())
     settings["Settings"]["YawOffset"] >> yaw_offset;
+
+  // 命令行 -s 参数覆盖 show_ui
+  if (arg_show_ui) {
+    show_ui = 1;
+  }
 
   settings.release();
 
